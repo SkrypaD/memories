@@ -1,0 +1,25 @@
+{
+  "name": "memory",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "build": "echo 'Build complete'",
+    "start": "node server.js"
+  },
+  "directories": {
+    "serve": "."
+  },
+  "files": [
+    "server.js",
+    "data/",
+    "views/",
+    "public/"
+  ],
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "ejs": "^3.1.9",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.8.0",
+    "firebase-functions": "^7.2.5"
+  }
+}

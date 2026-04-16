@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= person.name %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+
+  </nav>
+
+  <header class="hero-header">
+    <div class="hero-header__overlay">
+    <nav class="navbar">
+      <a href="/about">Про нас</a>
+      <a href="/" class="active">Герої Чорнобильці</a>
+
+    </div>
+    <div class="hero-header__photo"></div>
+  </header>
+
+  <main class="container">
+
+    <div class="person-header-content">
+      <img src="<%= person.photo %>" alt="<%= person.name %>" class="person-avatar" />
+      <!-- <img src="/images/man.png" alt="<%= person.name %>" class="person-avatar" /> -->
+      <h1 class="person-name"><%= person.name %></h1>
+    </div>
+    <section class="person-story">
+      <% person.sections.forEach((section, i) => { %>
+        <div class="story-block <%= i % 2 === 0 ? 'story-block--left' : 'story-block--right' %>">
+          <p class="story-text"><%= section.text %></p>
+          <% if (section.image) { %>
+            <div class="story-img-wrap">
+              <img src="<%= section.image %>" alt="" />
+            </div>
+          <% } %>
+        </div>
+      <% }) %>
+    </section>
+
+    <section class="memories-section">
+  <h2 class="section-title">Залишити свої спогади</h2>
+
+  <form action="/person/<%= person.id %>/memory" method="POST" class="memory-form">
+    <input type="text" name="author" placeholder="Ваше ім'я" required />
+    <textarea name="text" placeholder="Ваш спогад..." rows="4" required></textarea>
+    <button type="submit" class="btn-add-memory">Додати спогад</button>
+  </form>
+
+  <div class="memories-list">
+    <% memories.forEach(memory => { %>
+      <div class="memory-item">
+        <div class="memory-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <div class="memory-body">
+          <div class="memory-meta">
+            <span class="memory-author"><%= memory.author %></span>
+            <span class="memory-date"><%= memory.created_at %></span>
+          </div>
+          <p class="memory-text"><%= memory.text %></p>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__contacts">
+        <p>&#9990; +380 50 000 00 00</p>
+        <p>&#9993; gu.pfu.sumy.region@gmail.com</p>
+      </div>
+      <div class="footer__socials"> </div>
+    </div>
+  </footer>
+
+</body>
+</html>

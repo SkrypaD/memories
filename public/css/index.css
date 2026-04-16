@@ -1,0 +1,637 @@
+
+/* --------------------------- */
+/* SECOND PART */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #2a2a3a;
+  --bg-card: #f5f0e8;
+  --bg-card-border: #d4cfc5;
+  --text-headers: #f9f9f9;
+  --text-primary: #1a1a2e;
+  --text-secondary: #d4cfc5;
+  --accent: #8b7355;
+  /* --header-overlay: #1a1a2e; */
+  --header-overlay: #242424;
+  --grid-gap: 1.5rem;
+  /* --main-bg-color: #1a1a2e; */
+  --main-bg-color: #242424;
+  /* --container-bg: rgba(35, 61, 77, 0.9); */
+  /* --container-bg: rgba(26, 26, 46, 0.9); */
+  /* --container-bg: rgba(43, 38, 33, 0.85); */
+  --container-bg: rgba(36, 36, 36, 0.85);
+
+  --container-width: 1100px;
+
+  --bg-about-page: rgba(36, 36, 36, 0.85);
+}
+
+html, body {
+  /* Prevents the 'rubber-banding' effect entirely */
+  overscroll-behavior: none; 
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  /*background-color: var(--bg);*/
+  color: var(--text-primary);
+  min-height: 100vh;
+
+  background-image: url('../images/background.jpg');
+
+  /* This centers the image vertically and horizontally */
+  background-position: top;
+
+  /* This prevents the image from repeating if it's smaller than the screen */
+  background-repeat: no-repeat;
+
+  /* This makes the background stay put when you scroll (optional) */
+  background-attachment: scroll;
+
+  /* CRITICAL: This scales the image to fill the screen without distorting it */
+  background-size: cover;
+  
+  /* Ensure the body is at least as tall as the viewport */
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* ── Navbar ── */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  
+  /* Використовуємо max-width замість width для гнучкості */
+  max-width: var(--container-width);
+  width: 100%; 
+  margin: 15px auto 0; /* Центруємо на сторінці */
+  padding: 0 2rem;    /* Додаємо внутрішні відступи для мобілок */
+  z-index: 10;
+}
+
+.navbar a {
+  color: var(--text-headers);
+  text-decoration: none; /* Прибираємо підкреслення за замовчуванням */
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+
+.navbar a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* 📱 Адаптивність для смартфонів */
+@media (max-width: 768px) {
+  .navbar {
+    /* Центруємо посилання по центру екрана на мобілці */
+    justify-content: center; 
+    gap: 1.5rem;
+    margin-top: 10px;
+    padding: 0 1rem;
+  }
+
+  .navbar a {
+    font-size: 0.9rem; /* Трохи зменшуємо текст */
+  }
+}
+
+/* 📱 Для дуже маленьких екранів (менше 400px) */
+@media (max-width: 400px) {
+  .navbar {
+    /* Якщо посилань багато, краще зробити їх у два ряди або зменшити відступ */
+    gap: 1rem;
+    flex-wrap: wrap; /* Дозволяємо перенос на наступний рядок */
+  }
+}
+
+/* ── Hero Header ── */
+.hero-header {
+  position: relative;
+  height: 350px;
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero-header__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--header-overlay);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-header__photo {
+  position: relative; 
+  /* z-index: 5; */
+  background-image: url('../images/header_background.jpg');
+  background-size: cover;
+  background-position: center 80%;
+  background-repeat: no-repeat; /* Prevents tiling if the image is small */
+  height: 290px;
+  width: 100%;
+}
+
+.hero-header__overlay__about {
+  position: absolute;
+  inset: 0;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-header__photo__about{
+  position: relative; 
+  /* z-index: 5; */
+  background-image: url('../images/header_background_about.png');
+  background-size: cover;
+  background-position: center 45%;
+  background-repeat: no-repeat; /* Prevents tiling if the image is small */
+  height: 290px;
+  width: 100%;
+}
+
+
+@media (max-width: 768px){
+
+  .hero-header__photo__about {
+    display: none;
+  }
+
+  .hero-header {
+    height: 10rem;
+  }
+
+  .hero-header__photo {
+    height: 70%;
+  }
+}
+
+.navbar__about{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  
+  /* Використовуємо max-width замість width для гнучкості */
+  max-width: var(--container-width);
+  width: 100%; 
+  margin: 15px auto 0; /* Центруємо на сторінці */
+  padding: 0 2rem;    /* Додаємо внутрішні відступи для мобілок */
+  z-index: 10;
+  color: #242424;
+}
+
+.navbar__about a {
+  color: #242424;
+}
+/* ── Main Container ── */
+.container,
+.container-about {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 2rem;
+  background-color: var(--container-bg);
+  min-height: calc(100vh - 260px - 120px);
+}
+
+/* ── Page Title ── */
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-headers);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.01em;
+}
+
+/* ── Heroes Grid ── */
+.heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+}
+
+@media (max-width: 640px) {
+  .heroes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .heroes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Hero Card ── */
+.hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.hero-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #c8c0b0;
+}
+
+.hero-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+
+.hero-card__name {
+  padding: 0.75rem 0.875rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.4;
+  border-top: 1px solid var(--bg-card-border);
+}
+
+/* ── Footer ── */
+.footer {
+  background: var(--main-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__contacts {
+  width: var(--container-width);
+  font-size: 1.2rem;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px){
+  .footer__contacts {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.footer__container{
+  max-width: var(--container-width);
+  margin: 25px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__contacts p {
+  color: rgba(255,255,255,0.65);
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.social-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+
+/* ------ */
+/* ── Person Header ── */
+/* ── Person Header Content (Базові стилі для десктопа) ── */
+.person-header-content {
+  position: relative;
+  /* Замість складних трансформацій використовуємо звичайний flex */
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  z-index: 20;
+  /* Піднімаємо контент вгору, щоб він "наповзав" на шапку */
+  margin-top: -110px; 
+}
+
+.person-avatar {
+  width: 190px;
+  height: 220px;
+  border-radius: 3px;
+  object-fit: cover;
+  object-position: top center;
+  border: 4px solid #e8e4dc;
+  flex-shrink: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.person-name {
+  font-size: 2.2rem; /* Трохи збільшив для десктопа */
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+/* 📱 Адаптивність для планшетів та смартфонів */
+@media (max-width: 768px) {
+  .person-header-content {
+    flex-direction: column; /* Ставимо фото над ім'ям */
+    text-align: center;     /* Центруємо текст */
+    gap: 1rem;
+    margin-top: -150px;     /* Коригуємо наповзання для мобілки */
+  }
+
+  .person-avatar {
+    width: 150px;           /* Зменшуємо розмір фото */
+    height: 180px;
+  }
+
+  .person-name {
+    font-size: 1.5rem;      /* Зменшуємо шрифт */
+    color: #fff;            /* Можна змінити на var(--text-headers), якщо фон світлий */
+    padding: 0 10px;
+  }
+}
+
+/* 📱 Для дуже маленьких екранів */
+@media (max-width: 480px) {
+  .person-header-content {
+    margin-top: -100px;
+  }
+  
+  .person-avatar {
+    width: 120px;
+    height: 150px;
+  }
+}
+
+.person-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+
+/* ── Story Blocks ── */
+.person-story {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  margin-top: 15px;
+}
+
+.story-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.story-block--right {
+  direction: rtl;
+}
+
+.story-block--right > * {
+  direction: ltr;
+  text-align: right;
+}
+
+
+.story-text,
+.story-text_about {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.about-text-block{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.story-text_about{
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.story-img-wrap {
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.story-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .story-block,
+  .story-block--right {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+}
+
+/* ── Memories ── */
+.memories-section {
+  border-top: 1px solid var(--bg-card-border);
+  padding-top: 2.5rem;
+}
+
+.section-title {
+  /*font-family: 'Playfair Display', serif;*/
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-headers);
+  margin-bottom: 1rem;
+}
+
+.btn-add-memory {
+  font-family: 'Inter', sans-serif;
+  display: inline-block;
+  padding: 0.9rem 1.25rem;
+  border: none;
+  background: var(--text-headers);
+  color: var(--main-bg-color);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: background 0.2s, color 0.2s;
+  max-width: 250px;
+}
+
+.btn-add-memory:hover {
+  background: var(--main-bg-color);
+  color: #fff;
+}
+
+.memories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.memory-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.memory-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #d4cfc5;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  margin: 5px;
+}
+
+.memory-avatar svg {
+  width: 20px;
+  height: 20px;
+}
+
+.memory-body {
+  flex: 1;
+}
+
+.memory-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+.memory-author {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--text-headers);
+}
+
+.memory-date {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.memory-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-headers);
+}
+
+.memory-form {
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+  gap: 15px;              /* Adds space between the fields */
+  max-width: 800px;       /* Optional: limits the width of the form */
+}
+
+.memory-form input {
+  max-width: 450px;
+}
+
+.memory-form input,
+.memory-form textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-size: 700;
+  width: 100%;            /* Ensures they take up the full width of the container */
+  padding: 10px;
+  box-sizing: border-box; /* Prevents padding from adding to the width */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.memory-form textarea {
+  resize: none;           /* Disables the drag-to-resize handle */
+}
+
+/* .btn-add-memory {
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  align-self: flex-start; 
+}
+
+*/
+
+.about-page {
+  background-color: #f9f9f9;
+  background-image: none;
+}
+
+.container-about {
+  background-color: var(--bg-about-page);
+}
+
+
+.story-block__img {
+
+}
+
+
+
+
+

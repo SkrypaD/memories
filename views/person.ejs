@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= person.name %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="detail-page">
+
+  <a href="/" class="back-btn">← Back</a>
+
+  <main class="detail-main">
+    <div class="detail-card">
+
+      <div class="detail-sidebar">
+        <div class="detail-avatar">
+          <img src="<%= person.avatar %>" alt="<%= person.name %>" />
+        </div>
+        <div class="detail-meta">
+          <div class="meta-item">
+            <span class="meta-label">Location</span>
+            <span class="meta-value"><%= person.location %></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Born</span>
+            <span class="meta-value"><%= person.born %></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Field</span>
+            <span class="meta-value"><%= person.role %></span>
+          </div>
+        </div>
+        <div class="detail-tags">
+          <% person.tags.forEach(tag => { %>
+            <span class="tag"><%= tag %></span>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="detail-content">
+        <span class="header-label">Profile</span>
+        <h1><%= person.name %></h1>
+        <p class="detail-role"><%= person.role %></p>
+        <div class="divider"></div>
+        <p class="detail-bio"><%= person.bio %></p>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Герої Чорнобильці</title>
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+
+
+  <header class="hero-header">
+    <div class="hero-header__overlay">
+    <nav class="navbar">
+      <a href="/about">Про нас</a>
+      <a href="/" class="active">Герої Чорнобильці</a>
+
+    </div>
+    <div class="hero-header__photo"></div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Герої Чорнобильці</h1>
+
+    <div class="heroes-grid">
+      <% people.forEach(person => { %>
+        <a href="/person/<%= person.id %>">
+        <div class="hero-card">
+          <div class="hero-card__img-wrap">
+            <img src="<%= person.photo %>" alt="<%= person.name %>" />
+          </div>
+          <p class="hero-card__name"><%= person.name %></p>
+        </div>
+        </a>
+      <% }) %>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__contacts">
+        <p>&#9990; +380 50 000 00 00</p>
+        <p>&#9993; gu.pfu.sumy.region@gmail.com</p>
+      </div>
+      <div class="footer__socials"> </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>People</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="header-label">Directory</span>
+      <h1>Notable <em>People</em></h1>
+      <p class="header-sub">Pioneers who shaped the world of computing</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <% people.forEach((person, i) => { %>
+      <a href="/person/<%= person.id %>" class="card" style="--i: <%= i %>">
+        <div class="card-avatar">
+          <img src="<%= person.avatar %>" alt="<%= person.name %>" />
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <% person.tags.slice(0,2).forEach(tag => { %>
+              <span class="tag"><%= tag %></span>
+            <% }) %>
+          </div>
+          <h2 class="card-name"><%= person.name %></h2>
+          <p class="card-role"><%= person.role %></p>
+          <p class="card-bio"><%= person.bio.substring(0, 100) %>...</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-location">📍 <%= person.location %></span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </main>
+</body>
+</html>
