@@ -10,6 +10,7 @@ const PORT = '3000'
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.set('view cashe', true)
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded( { extended : true }));
@@ -18,6 +19,7 @@ app.use(express.json())
 
 /* Get All */
 app.get("/", (req, res) => {
+    res.set('Cashe-Control', 'public, max-age=600')
     res.render("index2", { people });
 })
 
@@ -68,6 +70,7 @@ app.get("/memories", (req, res) => {
 })
 
 app.get("/about", (req, res) => {
+    res.set('Cashe-Control', 'public, max-age=600')
     res.render('about')
 })
 
